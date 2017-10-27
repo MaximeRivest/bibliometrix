@@ -105,7 +105,7 @@ if ("AU" %in% Tags){
   Authors_frac=aggregate(fracAU,by=list(AU),'sum')
   names(Authors_frac)=c("Author","Frequency")
   Authors_frac=Authors_frac[order(-Authors_frac$Frequency),]
-  FirstAuthors=lapply(listAU,function(l) l[[1]])
+  FirstAuthors=purrr::map(listAU,1)
   listAUU=strsplit(as.character(M$AU[nAU>1]),sep)
   AuMultiAuthoredArt=length(unique(gsub(" ", "", unlist(listAUU), fixed = TRUE)))
   }
